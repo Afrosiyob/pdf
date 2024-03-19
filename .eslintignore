@@ -1,0 +1,8 @@
+/node_modules
+/dist
+/build
+
+plopfile.js
+
+src/env.d.ts
+
