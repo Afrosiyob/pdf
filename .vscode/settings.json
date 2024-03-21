@@ -9,5 +9,11 @@
   ],
   "explorer.compactFolders": false,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.minimap.enabled": true,
+  "files.trimTrailingWhitespace": true,
+  "material-icon-theme.activeIconPack": "react",
   "typescript.tsdk": "node_modules/typescript/lib"
 }

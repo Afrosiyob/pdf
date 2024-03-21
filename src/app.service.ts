@@ -9,6 +9,13 @@ export class AppService {
     return 'Hi';
   }
   getCat(): string {
-    return 'Get Cat';
+    return 'Get Cat Test';
+  }
+  getObject(): {
+    data: string;
+  } {
+    return {
+      data: 'data',
+    };
   }
 }

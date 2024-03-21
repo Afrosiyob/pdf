@@ -10,14 +10,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('/hi')
-  getHi(): string {
-    return this.appService.getHi();
-  }
-
-  @Get('/cat')
-  getCat(): string {
-    return this.appService.getCat();
-  }
 }
