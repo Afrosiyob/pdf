@@ -6,8 +6,18 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('/')
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('/hi')
+  getHi(): string {
+    return this.appService.getHi();
+  }
+
+  @Get('/cat')
+  getCat(): string {
+    return this.appService.getCat();
   }
 }
