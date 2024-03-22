@@ -14,6 +14,5 @@
   },
   "editor.minimap.enabled": true,
   "files.trimTrailingWhitespace": true,
-  "material-icon-theme.activeIconPack": "react",
   "typescript.tsdk": "node_modules/typescript/lib"
 }
