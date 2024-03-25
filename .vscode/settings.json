@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
+    "autoescape",
     "commitlint",
+    "domcontentloaded",
     "jellyjs",
     "Parens",
     "plusplus",
     "postversion",
-    "preversion"
+    "preversion",
+    "uncolorize"
   ],
   "explorer.compactFolders": false,
   "editor.formatOnSave": true,

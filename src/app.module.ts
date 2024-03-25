@@ -1,26 +1,40 @@
-import { LoggerMiddleware } from './common/middlewares/logger.middleware';
-import { DogController } from './models/dog/dog.controller';
-import { DogModule } from './models/dog/dog.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { config } from './common/configs';
+import { CertificateModule } from './models/certificate/certificate.module';
+import { ReceiptModule } from './models/receipt/receipt.module';
+import { RegistryModule } from './models/registry/registry.module';
 
-import {
-  type MiddlewareConsumer,
-  Module,
-  type NestModule,
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
-  imports: [DogModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env', '.env.development', '.env.example'],
+      load: [config], // we can create special config for other module
+      isGlobal: true, // works for other modules,
+      cache: true // helping get variables from env
+    }),
+    ThrottlerModule.forRoot([
+      {
+        name: 'short',
+        ttl: 1000,
+        limit: 3
+      },
+      {
+        name: 'medium',
+        ttl: 10000,
+        limit: 20
+      },
+      {
+        name: 'long',
+        ttl: 60000,
+        limit: 100
+      }
+    ]),
+    CertificateModule,
+    ReceiptModule,
+    RegistryModule
+  ]
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    // consumer
-    //   .apply(LoggerMiddleware)
-    //   .forRoutes({ path: 'cats', method: RequestMethod.ALL }); special method for request
-
-    consumer.apply(LoggerMiddleware).forRoutes(DogController);
-  }
-}
+export class AppModule {}
